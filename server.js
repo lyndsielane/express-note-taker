@@ -1,16 +1,10 @@
-const express = require('express');
-const path = require('path');
-const http = require('http');
-
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/notes.html'));
-});
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+require('./routes/apiRoutes')(app);
+require('./routes.htmlRoutes')(app);
 
 app.listen(PORT, () => console.log(`App is listening on PORT ${PORT}`));
