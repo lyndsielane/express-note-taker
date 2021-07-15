@@ -1,3 +1,12 @@
+const express = require('express');
+const fs= require('fs');
+
+const app = express();
+const PORT = 8080;
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -25,8 +34,10 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+app.get('public/notes.html', (req, res) => res.json(notes));
+
 const getNotes = () =>
-  fetch('/api/notes', {
+  fetch('public/notes.html', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
