@@ -16,4 +16,19 @@ module.exports = (app) => {
         })
         return res.json(req.body);
     })
+
+    app.delete('/api/notes/:id', (req, res) => {
+        notes.forEach((i, note) => {
+            if (note.id === req.body.id) {
+                notes[i]
+            }
+        })
+        fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        })
+        return res.json(req.body);
+    })
 }
