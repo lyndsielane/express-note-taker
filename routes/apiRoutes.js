@@ -10,25 +10,27 @@ module.exports = (app) => {
         notes.push(req.body);
         fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
             if (err) {
-                console.error(err)
-                return
+                console.error(err);
+                return;
             }
-        })
+        });
         return res.json(req.body);
-    })
+    });
 
     app.delete('/api/notes/:id', (req, res) => {
-        notes.forEach((i, note) => {
-            if (note.id === req.body.id) {
-                notes[i]
+        notes.forEach((note, i) => {
+            if (note.id === req.params.id) {
+                notes.splice(i, 1);
+                return;
             }
         })
         fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
             if (err) {
-                console.error(err)
-                return
+                console.error(err);
+                return;
             }
-        })
-        return res.json(req.body);
-    })
+        });
+
+        return res.JSON();
+    });
 }
