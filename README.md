@@ -10,5 +10,6 @@ An easy note taker app to keep track of any information you need.
 * Pressing the add icon will bring the blank template back up on the right hand side to add more notes.
 * Hitting the red trashcan next to a saved note will delete the note.
 
-![Landing Preview]()
-![Notes Preview]()
+The app is deployed at https://lyndsie-note-taker.herokuapp.com/
+
+![Notes Preview](https://github.com/lyndsielane/express-note-taker/blob/main/public/assets/localhost_8080_notes.png?raw=true)
